@@ -1,6 +1,7 @@
-baseurl = "https://zhaohuabing.com"
+baseurl = "https://roger-beathard.github.io"
 title = "Roger Beathard"
 theme = "hugo-theme-cleanwhite"
+publishDir = "docs"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
