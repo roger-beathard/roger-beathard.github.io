@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Roger Beathard">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://zhaohuabing.com/img/front-page.jpg">
+    <meta property="twitter:image" content="https://zhaohuabing.com/img/front-page.jpg" />
+    
+
+    
+    <meta name="title" content="How a service mesh architecture can help you clean up those skeletons in your closet." />
+    <meta property="og:title" content="How a service mesh architecture can help you clean up those skeletons in your closet." />
+    <meta property="twitter:title" content="How a service mesh architecture can help you clean up those skeletons in your closet." />
+    
+
+    
+    <meta name="description" content="A blog about stuff that interest me.">
+    <meta property="og:description" content="A blog about stuff that interest me." />
+    <meta property="twitter:description" content="A blog about stuff that interest me." />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="technology, software, development, architecture, ISTIO, Kubernetes, Cloud, Microservices, Blog, Roger Beathard">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>How a service mesh architecture can help you clean up those skeletons in your closet. | A blog by Roger Beathard.</title>
+
+    <link rel="canonical" href="/post/skeletons-in-the-closet/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Roger Beathard</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/network-background.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>How a service mesh architecture can help you clean up those skeletons in your closet.</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                    Roger Beathard
+                             
+                            on 
+                            Friday, June 24, 2022
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <p>Companies typically concentrate on their primary applications/services as they analyze their cloud migration strategy. In most cases, these applications tend to have well-defined support &amp; security models. When doing an inventory of applications, most corporations start to uncover &ldquo;skeleton applications.&rdquo;</p>
+<h2 id="do-you-have-skeletons-hiding-in-your-closet">Do you have skeletons hiding in your closet?</h2>
+<p>Examples of skeletons that could be hiding in your closet:</p>
+<ul>
+<li>typically organically developed to serve a specific purpose</li>
+<li>contains code with little to no new development</li>
+<li>one-offs</li>
+<li>written in older languages such as Perl, Bash, or &lsquo;C&rsquo; (Does anybody remember TCL?)</li>
+<li>Rogue applications</li>
+<li>Little to no support</li>
+<li>Sketchy security/network architecture</li>
+<li>Different OS and versions or different application stacks</li>
+<li>No formal Dev-Ops support</li>
+</ul>
+<p>In my years of development, I have run across a wide gamut of these types of applications:</p>
+<ul>
+<li>A significant vendor ran a phone home service on a desktop machine in someone&rsquo;s office</li>
+<li>Another vendor had several organically developed applications written in PHP, Perl, NodeJS &amp; Python.</li>
+<li>Production builds artifacts metadata server running in a desktop machine. (And yes, this ran in someone&rsquo;s office.)</li>
+</ul>
+<h2 id="logical-functional-breakdown-that-is-used-by-most-applications">Logical functional breakdown that is used by most applications</h2>
+<p>
+  <img src="images/application-pattern.png" alt="Image alt">
+
+</p>
+<ul>
+<li>Ingress connection management is managed by a web server or within the application.</li>
+<li>Egress (DB, Rest I/F) connection management is typically embedded within the application.</li>
+<li>Credentials/Secrets are typically just managed as files/environment variables, Not easily rotated/centrally managed.</li>
+<li>Logs are local, with no central visibility.</li>
+<li>Although the application will only utilize a small number of third-party packages, third-party package bloat is typically caused by dependencies on supporting functions.</li>
+<li>OS may not be up to date, security updates?</li>
+</ul>
+<h2 id="lift-and-shift-to-the-rescue">Lift-And-Shift to the rescue</h2>
+<p>Insert diagram</p>
+<p>Most corporations treat these applications as a nuisance and take a lift-and-shift approach. The thought is that this model provides a quicker migration to the cloud. There are several problems with this model:</p>
+<ul>
+<li>VM instance sprawl as each application is moved over in a 1-to-1 conversion (Many one-off deployment instances)</li>
+<li>VM image sprawl as each application may have there own dependencies which may require a separate VM image template</li>
+<li>Network architecture issues (i.e., Load Balancing, Authentication, Firewalling)</li>
+<li>Security issues</li>
+<li>Observability issues (logging, metrics)</li>
+</ul>
+<div style="border-style: solid; margin: 20px 20px; border-width: medium; border-color:#F08080;float:center"><p style="margin: 20px 20px";>In summary, you are not only moving the applications to the cloud, but in most instances, an organization is bringing these applications under a proper support/security model. A lift-and-shift migration moves the problem to the cloud unless a team undergoes a "potentially size-able" development effort. </p>
+</div>
+<hr>
+<h2 id="service-mesh-to-the-rescue">Service Mesh to the rescue</h2>
+<p>
+  <img src="images/service-mesh-to-rescue.png" alt="Image alt">
+
+</p>
+<p>Typical Kubernetes deployment with ISTIO</p>
+<p>The following is a typical Kubernetes Pod Deployment that utilizes an ISTIO service mesh and possibly one or more side-car (shims) for logging and secrets.</p>
+<p>Insert Slide</p>
+<p>I contend that most of these applications&rsquo; management/support issues involve managing the various 3rd part components that support the application. Items like:</p>
+<ul>
+<li>credential secrets management</li>
+<li>Syslog configuration</li>
+<li>TLS/MTLS termination</li>
+<li>User authentication issues</li>
+</ul>
+<p>Most applications are simple:</p>
+<p>Insert diagram</p>
+<ul>
+<li>Receive a message/event.</li>
+<li>Process a message/event by possibly making external calls.</li>
+<li>Log the activity.</li>
+<li>Provide the results.</li>
+</ul>
+<p>Insert Slide Application</p>
+<h2 id="simplified-networking">Simplified Networking</h2>
+<p>Utilizing a service mesh architecture allows the application network interaction to be simplified. In addition, it will enable infrastructure teams to manage network infrastructure consistently.</p>
+<p>Insert Slide</p>
+<p>Envoy proxy attributes:</p>
+<ul>
+<li>Envoy proxy within a POD will proxy all traffic to/from all containers running in the POD.</li>
+<li>These connections to/from the containers to/from the Envoy proxy are non-secured.</li>
+<li>Any security attributes of the external connection (i.e., TLS, MTLS, and user authentication) are handled by the Envoy proxy or ingress/egress gateways.</li>
+<li>These proxies are fully featured to extract or enrich messages as required by the application.</li>
+</ul>
+<h3 id="how-does-this-simplify-migration">How does this simplify migration?</h3>
+<ul>
+<li>Moves the complexity of secured communication handling to the edge (Envoy or ISTIO ingress/egress Gateway)</li>
+<li>Moves management of certificates and credentials under central control or allows compliance to best practices.</li>
+<li>It can allow the application to add additional network security mechanisms necessary when moving to the cloud. (i.e., user authentication).</li>
+</ul>
+<h2 id="standard-loggingsecrets-management">Standard logging/secrets management</h2>
+<p>Insert diagram</p>
+<h3 id="observability">Observability</h3>
+<p>The observability of these applications is typically an afterthought and is generally supported by a user logging into the box and looking at the various log files. This logging pattern allows these applications to fall into compliance by allowing logs and metrics to be centrally collected.</p>
+<p>Logs or other metrics can be transformed or centrally shipped by deploying a logging sidecar (shim) that either provides a logging mount point or acts as a Syslog sync proxy for the Application.</p>
+<h3 id="secrets">Secrets</h3>
+<p>Similar to logging, a Secrets sidecar (shim) can act as a proxy to provide an application with its secretes/certificates. This &ldquo;secrets&rdquo; management technique allows these Applications to fall into compliance by enabling secrets to be centrally managed.</p>
+<h2 id="osthird-party-components">OS/Third-party components</h2>
+<p>By moving the networking, logging, and secrets management function out of &ldquo;the application stack,&rdquo; the application OS and third-party component dependencies in the application container will be reduced significantly.</p>
+<blockquote>
+<p>&ldquo;Just think about the number of components it takes to run Ubuntu.&rdquo;</p>
+</blockquote>
+<p>Container OS for the Application will be the minimal number of components to run just the Application.</p>
+<h2 id="summary">Summary</h2>
+<p>The final decision comes down to how much development is necessary to support a lift &amp; shift strategy versus leveraging techniques such as a service mesh architecture to convert your skeletons to a first-class application.</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    
+                </ul>
+                
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/roger-beathard">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/roger-beathard">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Roger Beathard 2022
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+</body>
+</html>
