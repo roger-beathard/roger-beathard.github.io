@@ -1,4 +1,4 @@
-baseurl = "https://roger-beathard.github.io"
+baseurl = "https://roger-beathard.com"
 title = "Roger Beathard"
 theme = "hugo-theme-cleanwhite"
 publishDir = "docs"

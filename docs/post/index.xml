@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Roger Beathard</title>
-    <link>https://roger-beathard.github.io/post/</link>
+    <link>https://roger-beathard.com/post/</link>
     <description>Recent content in Posts on Roger Beathard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jun 2022 12:43:41 -0500</lastBuildDate><atom:link href="https://roger-beathard.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Jun 2022 12:43:41 -0500</lastBuildDate><atom:link href="https://roger-beathard.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How a service mesh architecture can help you clean up those skeletons in your closet.</title>
-      <link>https://roger-beathard.github.io/post/skeletons-in-the-closet/</link>
+      <link>https://roger-beathard.com/post/skeletons-in-the-closet/</link>
       <pubDate>Fri, 24 Jun 2022 12:43:41 -0500</pubDate>
       
-      <guid>https://roger-beathard.github.io/post/skeletons-in-the-closet/</guid>
+      <guid>https://roger-beathard.com/post/skeletons-in-the-closet/</guid>
       <description>Companies typically concentrate on their primary applications/services as they analyze their cloud migration strategy. In most cases, these applications tend to have well-defined support &amp;amp; security models. When doing an inventory of applications, most corporations start to uncover &amp;ldquo;skeleton applications.&amp;rdquo;
 Do you have skeletons hiding in your closet? Examples of skeletons that could be hiding in your closet:
 typically organically developed to serve a specific purpose contains code with little to no new development one-offs written in older languages such as Perl, Bash, or &amp;lsquo;C&amp;rsquo; (Does anybody remember TCL?</description>
