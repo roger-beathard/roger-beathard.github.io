@@ -28,6 +28,8 @@ In my years of development, I have run across a wide gamut of these types of app
 
 ## Logical functional breakdown that is used by most applications
 
+{{< figure src="images/os.png" >}}
+
 ![Image alt](images/application-pattern.png)
 
 * Ingress connection management is managed by a web server or within the application.
