@@ -124,6 +124,19 @@ isPlainText = true
 mediaType = "application/json"
 notAlternative = true
 
+ [params.giscus]
+  data_repo="roger-beathard/roger-beathard.github.io"
+  data_repo_id="R_kgDOHjU6Fw"
+  data_category="Announcements"
+  data_category_id="DIC_kwDOHjU6F84CSbO4"
+  data_mapping="pathname"
+  data_reactions_enabled="1"
+  data_emit_metadata="0"
+  data_theme="light"
+  data_lang="en"
+  crossorigin="anonymous"
+
+
 [params.algolia]
 vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
 params = ["categories", "tags"] 
