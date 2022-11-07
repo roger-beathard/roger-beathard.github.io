@@ -6,8 +6,6 @@ image: "img/network-background.jpg"
 ---
 
 
-![Image alt](images/Untitled.drawio.svg)
-
 Companies typically concentrate on their primary applications/services as they analyze their cloud migration strategy. In most cases, these applications tend to have well-defined support & security models. When doing an inventory of applications, most corporations start to uncover "skeleton applications."
 
 ## Do you have skeletons hiding in your closet?
@@ -29,8 +27,7 @@ In my years of development, I have run across a wide gamut of these types of app
 * Production builds artifacts metadata server running in a desktop machine. (And yes, this ran in someone's office.)
 
 ## Logical functional breakdown that is used by most applications
-
-{{< figure src="images/os.png" >}}
+![Image Caption](images/Untitled.drawio.svg)
 
 ![Image alt](images/application-pattern.png)
 
