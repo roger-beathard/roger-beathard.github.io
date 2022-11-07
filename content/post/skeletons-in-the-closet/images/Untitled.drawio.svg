@@ -1,0 +1,35 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="421px" height="411px" viewBox="-0.5 -0.5 421 411" content="&lt;mxfile&gt;&lt;diagram id=&quot;ARp7LZJTKe5w8RSc1RgA&quot; name=&quot;Page-1&quot;&gt;tZVdj6MgFIZ/jZfboGg/LtvO7EfSTZr0Yi83VFDJoMcgHdv99QsKWge7O8nO2qSRlwMenvMCAd6X1y+S1MV3oEwEEaLXAD8FUbRMQv1vhFsvrJZJL+SS014KR+HEfzErIqteOGXNJFABCMXrqZhCVbFUTTQiJbTTsAzE9Ks1yZknnFIifPUHp6ro1XWCRv0r43nhvhwi21MSF2yFpiAU2jsJPwd4LwFU/1Ze90wYdo5LP+7zg94hMckq9Z4BlvsrERe7NpuXurnFSrhUlJl4FOBdW3DFTjVJTW+rq6u1QpVCt0L9mnEh9iBAdmPxOaQ0M8MaJeGF3fWEaIU3eo6dTYBJxa4PFxEOaLSlGJRMyZsOcQMcXmun0BWiHYsTO+LFXWFiZyhiDZEPc4/M9IvFNo8w+r8I6RppVEaHSt3pWffMod0mCMVoQOtxnKH9GO3mDdq1jzacQ5t8AFn8d7Le4mn3GCxuZ4UDI7dXjTKWxLTIuQFxUWwrU3vadOrQij6GZrSe0ow3MzTRnFHjf6cZezQPkDda2R6/+VxfmEoLa1hKmmJwrz1TybkLRX/07ioxP8+jFVSsr1Bt5iivubklFnlaRwuhc/pJaq77NWpl5xXkzMQRGq44VFqTPZqdQc/1uXx4019ySk1+OyJ4bgTBsvv4rZWHuEZvR17lhy7sKbHbzXlhvvz43eW35UaLxCs3jvxqO00yQRR/nV46cxawXzwC17kNbksmXvsULqcTQJY1THkOGtKeM5VujndTHz5e8Pj5Nw==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="0" width="420" height="410" fill="#b1ddf0" stroke="#10739e" pointer-events="all"/>
+        <rect x="90" y="30" width="120" height="50" fill="#d80073" stroke="#a50040" pointer-events="all"/>
+        <rect x="180" y="340" width="100" height="44" rx="1" ry="1" fill="#000000" stroke="#000000" pointer-events="all" transform="translate(2,3)" opacity="0.25"/>
+        <rect x="180" y="340" width="100" height="44" rx="1" ry="1" fill="rgb(255, 255, 255)" stroke="#dddddd" pointer-events="all"/>
+        <path d="M 201.04 378 C 192.36 378 185 371.23 185 361.89 C 185 352.84 192.54 346 201.01 346 C 209.8 346 217 353.67 217 361.92 C 217 370.63 209.91 378 201.04 378 Z" fill="#757575" stroke="none" pointer-events="all"/>
+        <path d="M 192.85 354.85 L 209.13 354.85 L 209.13 357.05 L 192.85 357.05 Z M 194.83 357.87 L 208.15 357.87 L 208.15 360.09 L 194.83 360.09 Z M 194.84 360.91 L 209.17 360.91 L 209.17 363.12 L 194.84 363.12 Z M 194.83 363.94 L 208.07 363.94 L 208.07 366.15 L 194.83 366.15 Z M 194.84 366.97 L 209.17 366.97 L 209.17 369.18 L 194.84 369.18 Z" fill="#ffffff" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 362px; margin-left: 224px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: nowrap;">
+                                Logs API
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="224" y="366" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    Logs A...
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
