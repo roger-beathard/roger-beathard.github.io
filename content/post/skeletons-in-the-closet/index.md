@@ -6,6 +6,8 @@ image: "img/network-background.jpg"
 ---
 
 
+![Image alt](images/Untitled.drawio.svg)
+
 Companies typically concentrate on their primary applications/services as they analyze their cloud migration strategy. In most cases, these applications tend to have well-defined support & security models. When doing an inventory of applications, most corporations start to uncover "skeleton applications."
 
 ## Do you have skeletons hiding in your closet?
