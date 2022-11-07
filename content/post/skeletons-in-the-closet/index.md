@@ -27,7 +27,7 @@ In my years of development, I have run across a wide gamut of these types of app
 * Production builds artifacts metadata server running in a desktop machine. (And yes, this ran in someone's office.)
 
 ## Logical functional breakdown that is used by most applications
-![Image Caption](images/Untitled.drawio.svg)
+<img src="images/Untitled.drawio.svg">
 
 ![Image alt](images/application-pattern.png)
 
