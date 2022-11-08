@@ -9,7 +9,7 @@ image: "img/network-background.jpg"
 Companies typically concentrate on their primary applications/services as they analyze their cloud migration strategy. In most cases, these applications tend to have well-defined support & security models. When doing an inventory of applications, most corporations start to uncover "skeleton applications."
 
 ## Do you have skeletons hiding in your closet?
-
+# Roger
 Examples of skeletons that could be hiding in your closet:
 * typically organically developed to serve a specific purpose
 * contains code with little to no new development
