@@ -1,7 +1,7 @@
 baseurl = "https://roger-beathard.com"
 title = "Roger Beathard"
 theme = "hugo-theme-cleanwhite"
-publishDir = "docs"
+publishDir = "public"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
