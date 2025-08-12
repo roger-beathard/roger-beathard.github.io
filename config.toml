@@ -11,17 +11,16 @@ author_image = "/images/author.png"
 
 [params.giscus]
 enabled = true 
-repo = "your-username/your-repo-name"  # Replace with your GitHub repo
-repo_id = "YOUR_REPO_ID"               # Get from giscus.app
-category = "General"                   # Discussion category name
-category_id = "YOUR_CATEGORY_ID"       # Get from giscus.app
-mapping = "pathname"                   # How to map pages to discussions
+repo = "roger-beathard/roger-beathard.github.io"
+repo_id = "R_kgDOHjU6Fw"
+category = "General"
+category_id = "DIC_kwDOHjU6F84CSbO5"
+mapping = "pathname"
 reactions_enabled = true
-emit_metadata = false
+emit_metadata = false 
 input_position = "bottom"
 theme = "light"
 lang = "en"
-
 
 [params.social]
 linkedin = "https://linkedin.com/in/roger-beathard"
