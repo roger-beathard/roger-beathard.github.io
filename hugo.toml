@@ -1,0 +1,43 @@
+baseURL = "https://rogerbeathardsite.com"
+languageCode = "en-us"
+title = "Roger Beathard"
+
+[params]
+author = "Roger Beathard"
+tagline = "Worn many hats."
+description = "An innovation intermediary and strategic thinker, that delivers on pragmatic solutions."
+banner_image = "/images/banner.jpg"
+author_image = "/images/author.png"
+
+[params.giscus]
+enabled = true 
+repo = "your-username/your-repo-name"  # Replace with your GitHub repo
+repo_id = "YOUR_REPO_ID"               # Get from giscus.app
+category = "General"                   # Discussion category name
+category_id = "YOUR_CATEGORY_ID"       # Get from giscus.app
+mapping = "pathname"                   # How to map pages to discussions
+reactions_enabled = true
+emit_metadata = false
+input_position = "bottom"
+theme = "light"
+lang = "en"
+
+
+[params.social]
+linkedin = "https://linkedin.com/in/roger-beathard"
+twitter = ""
+
+[[menu.main]]
+name = "ALL POSTS"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "ABOUT"
+url = "/about"
+weight = 2
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true

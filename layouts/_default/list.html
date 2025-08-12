@@ -1,0 +1,53 @@
+{{ define "main" }}
+<section class="hero hero-small" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('{{ .Site.Params.banner_image | default "/images/banner.jpg" }}') center/cover;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">{{ .Site.Title }}</h1>
+        <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="content-grid">
+            <div class="main-content">
+                <h1 class="page-title">{{ .Title }}</h1>
+                
+                {{ range .Pages }}
+                <article class="post-preview">
+                    <h2 class="post-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h2>
+                    <div class="post-meta">
+                        <span>Posted by {{ .Site.Params.author }} on {{ .Date.Format "Monday, January 2, 2006" }}</span>
+                    </div>
+                    <div class="post-excerpt">
+                        {{ .Summary }}
+                    </div>
+                    <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+                </article>
+                {{ end }}
+            </div>
+
+            <div class="sidebar">
+                <div class="author-card">
+                    <img src="{{ .Site.Params.author_image | default "images/author.jpg" | absURL }}" alt="{{ .Site.Params.author }}" class="author-image">
+                    <p class="author-description">{{ .Site.Params.description }}</p>
+                    <div class="social-links">
+                        {{ if .Site.Params.social.linkedin }}
+                        <a href="{{ .Site.Params.social.linkedin }}" class="social-link linkedin" target="_blank">
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                        {{ end }}
+                        {{ if .Site.Params.social.twitter }}
+                        <a href="{{ .Site.Params.social.twitter }}" class="social-link twitter" target="_blank">
+                            <span class="sr-only">Twitter</span>
+                        </a>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

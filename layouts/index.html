@@ -1,0 +1,99 @@
+{{ define "main" }}
+<section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('{{ .Site.Params.banner_image | default "/images/banner.jpg" }}') center/cover;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">{{ .Site.Title }}</h1>
+        <p class="hero-tagline">{{ .Site.Params.tagline }}</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="content-grid">
+            <div class="main-content">
+                {{ range where .Paginator.Pages "Section" "posts" }}
+                <article class="post-preview">
+                    <h2 class="post-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h2>
+                    <div class="post-meta">
+                        <span>Posted by {{ .Site.Params.author }} on {{ .Date.Format "Monday, January 2, 2006" }}</span>
+                        {{ if .Params.categories }}
+                        <div class="post-categories">
+                            {{ range .Params.categories }}
+                            <a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="category-link">{{ . }}</a>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                    <div class="post-excerpt">
+                        {{ .Summary }}
+                    </div>
+                    <div class="post-preview-footer">
+                        <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+                        {{ if .Params.tags }}
+                        <div class="post-tags-preview">
+                            {{ range first 3 .Params.tags }}
+                            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag-link-small">{{ . }}</a>
+                            {{ end }}
+                            {{ if gt (len .Params.tags) 3 }}
+                            <span class="more-tags">+{{ sub (len .Params.tags) 3 }} more</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </article>
+                {{ end }}
+
+                {{ template "_internal/pagination.html" . }}
+            </div>
+
+            <div class="sidebar">
+                <div class="author-card">
+                    <img src="{{ .Site.Params.author_image | default "images/author.jpg" | absURL }}" alt="{{ .Site.Params.author }}" class="author-image">
+                    <p class="author-description">{{ .Site.Params.description }}</p>
+                    <div class="social-links">
+                        {{ if .Site.Params.social.linkedin }}
+                        <a href="{{ .Site.Params.social.linkedin }}" class="social-link linkedin" target="_blank">
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                        {{ end }}
+                        {{ if .Site.Params.social.twitter }}
+                        <a href="{{ .Site.Params.social.twitter }}" class="social-link twitter" target="_blank">
+                            <span class="sr-only">Twitter</span>
+                        </a>
+                        {{ end }}
+                    </div>
+                </div>
+
+                {{ if .Site.Taxonomies.categories }}
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <div class="category-list">
+                        {{ range .Site.Taxonomies.categories.ByCount }}
+                        <a href="{{ .Page.Permalink }}" class="category-item">
+                            <span class="category-name">{{ .Page.Title }}</span>
+                            <span class="category-count">{{ .Count }}</span>
+                        </a>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+
+                {{ if .Site.Taxonomies.tags }}
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Popular Tags</h3>
+                    <div class="tag-cloud">
+                        {{ range first 15 .Site.Taxonomies.tags.ByCount }}
+                        <a href="{{ .Page.Permalink }}" class="tag-cloud-item" style="font-size: {{ add 0.8 (mul 0.4 (div .Count 3.0)) }}rem;">
+                            {{ .Page.Title }}
+                        </a>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
